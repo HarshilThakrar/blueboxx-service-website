@@ -157,17 +157,41 @@ export function Contact() {
 
   const onSubmit = async (data: ContactFormValues) => {
     setIsSubmitting(true);
-    // Mock API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    console.log('Form submitted:', data);
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    reset();
+    
+    try {
+      const response = await fetch('https://backend.blueboxxda.com/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data),
+      });
 
-    // Reset success message after 5 seconds
-    setTimeout(() => {
-      setIsSuccess(false);
-    }, 5000);
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+
+      const result = await response.json();
+      
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      reset();
+
+      // If backend provides a WhatsApp redirect, we could use it here
+      // if (result.whatsapp_url) {
+      //   window.open(result.whatsapp_url, '_blank');
+      // }
+
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setIsSuccess(false);
+      }, 5000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setIsSubmitting(false);
+      alert('Failed to submit the form. Please try again or contact us directly.');
+    }
   };
 
   return (
