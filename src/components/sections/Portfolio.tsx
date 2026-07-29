@@ -43,7 +43,7 @@ export function Portfolio() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/portfolio');
+        const response = await fetch('https://backend.blueboxxda.com/api/portfolio');
         const data = await response.json();
         
         // Extract category names and prepend 'All'
