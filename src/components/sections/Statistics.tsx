@@ -69,7 +69,7 @@ export function Statistics() {
           <Counter value={150} label="Projects Delivered" />
           <Counter value={40} label="Satisfied Clients" />
           <Counter value={15} label="Industries Served" />
-          <Counter value={10} label="Years Experience" />
+          <Counter value={12} label="Years Experience" />
         </div>
       </div>
     </section>

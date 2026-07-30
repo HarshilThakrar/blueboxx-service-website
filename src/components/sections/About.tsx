@@ -70,7 +70,7 @@ export function About() {
             </p>
             <div className="flex gap-6">
               <div className="p-5 rounded-2xl bg-white border border-zinc-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-transform hover:-translate-y-1">
-                <div className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-theme-blue to-theme-gold mb-1">10+</div>
+                <div className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-theme-blue to-theme-gold mb-1">12+</div>
                 <div className="text-xs text-zinc-500 font-bold tracking-wider uppercase">Years Experience</div>
               </div>
               <div className="p-5 rounded-2xl bg-white border border-zinc-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-transform hover:-translate-y-1">
