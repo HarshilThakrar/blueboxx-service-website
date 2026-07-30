@@ -69,9 +69,8 @@ function CustomSelect({
                     onChange(option.value);
                     setIsOpen(false);
                   }}
-                  className={`px-4 py-3 cursor-pointer hover:bg-zinc-50 transition-colors ${
-                    value === option.value ? 'bg-zinc-50 font-medium text-theme-gold' : 'text-zinc-700'
-                  }`}
+                  className={`px-4 py-3 cursor-pointer hover:bg-zinc-50 transition-colors ${value === option.value ? 'bg-zinc-50 font-medium text-theme-gold' : 'text-zinc-700'
+                    }`}
                 >
                   {option.label}
                 </div>
@@ -157,7 +156,7 @@ export function Contact() {
 
   const onSubmit = async (data: ContactFormValues) => {
     setIsSubmitting(true);
-    
+
     try {
       const response = await fetch('https://backend.blueboxxda.com/api/contact', {
         method: 'POST',
@@ -165,7 +164,16 @@ export function Contact() {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          name: data.fullName,
+          company: data.companyName,
+          email: data.email,
+          phone: data.phone,
+          service: data.service,
+          budget: data.budget,
+          timeline: data.timeline,
+          message: data.message,
+        }),
       });
 
       if (!response.ok) {
@@ -173,7 +181,7 @@ export function Contact() {
       }
 
       const result = await response.json();
-      
+
       setIsSubmitting(false);
       setIsSuccess(true);
       reset();
