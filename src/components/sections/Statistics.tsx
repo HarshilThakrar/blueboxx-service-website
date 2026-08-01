@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 function Counter({ value, label, suffix = '+' }: { value: number, label: string, suffix?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  
+
   const motionValue = useMotionValue(0);
   const springValue = useSpring(motionValue, {
     damping: 60,
@@ -28,7 +28,7 @@ function Counter({ value, label, suffix = '+' }: { value: number, label: string,
     <div ref={ref} className="flex flex-col items-center justify-center p-8 rounded-3xl bg-black/[0.02] border border-black/5 relative overflow-hidden group hover:bg-black/[0.04] transition-colors duration-500">
       <div className="absolute top-0 right-0 w-32 h-32 bg-theme-gold/10 blur-[50px] rounded-full group-hover:bg-theme-gold/10 transition-colors duration-500" />
       <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-500/10 blur-[50px] rounded-full group-hover:bg-purple-500/20 transition-colors duration-500" />
-      
+
       <div className="relative z-10 flex items-baseline gap-1 mb-2">
         <motion.span className="text-5xl md:text-6xl font-heading font-bold text-zinc-900 tracking-tight">
           {rounded}
@@ -58,7 +58,7 @@ export function Statistics() {
         }
       });
     }, sectionRef);
-    
+
     return () => ctx.revert();
   }, []);
 
