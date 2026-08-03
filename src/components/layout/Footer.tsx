@@ -15,15 +15,15 @@ export function Footer() {
               Enterprise-level technology and business growth solutions for startups, SMEs, and enterprises worldwide.
             </p>
             <div className="flex gap-4">
-              {/* Social placeholders */}
-              <a href="#" className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center text-zinc-900 hover:bg-theme-gold transition-colors">
-                X
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center text-zinc-900 hover:bg-theme-gold transition-colors">
-                in
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center text-zinc-900 hover:bg-theme-gold transition-colors">
+              {/* Social links */}
+              <a href="https://www.instagram.com/blueboxxda_/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center text-zinc-900 hover:bg-theme-gold transition-colors">
                 IG
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=61563770886246" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center text-zinc-900 hover:bg-theme-gold transition-colors">
+                FB
+              </a>
+              <a href="https://www.linkedin.com/company/34074131/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center text-zinc-900 hover:bg-theme-gold transition-colors">
+                in
               </a>
             </div>
           </div>
