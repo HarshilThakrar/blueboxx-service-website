@@ -15,32 +15,60 @@ gsap.registerPlugin(ScrollTrigger);
 const testimonials = [
   {
     id: 1,
-    name: 'Sarah Jenkins',
-    role: 'CTO, TechNova Inc.',
-    content: "Blueboxx entirely revamped our enterprise architecture. Their team's understanding of scalable systems is unparalleled.",
+    company: 'Jash Packaging',
+    content: "Blueboxx delivered a modern business website that significantly improved our online presence. Their team maintained excellent communication and delivered the project before the deadline.",
     rating: 5,
+    logo: '/logo/Jashpackaging.jpeg'
   },
   {
     id: 2,
-    name: 'Michael Chen',
-    role: 'Founder, HealthSync',
-    content: "The custom AI automation solution they built for us reduced our operational overhead by 40% in just three months.",
+    company: 'Damyaa Foods',
+    content: "A highly professional team with a deep understanding of market trends. The web development services provided by Blueboxx gave Damyaa Foods the premium digital footprint we needed.",
     rating: 5,
+    logo: '/logo/Damyaa.png'
   },
   {
     id: 3,
-    name: 'Elena Rodriguez',
-    role: 'VP Engineering, Global Retail',
-    content: "From discovery to launch, the Blueboxx team operated as an extension of our own. Truly a premium technology partner.",
+    company: 'Flammer Technologies Pvt. Ltd.',
+    content: "The development quality, UI/UX, and technical execution exceeded our expectations. Blueboxx has become our trusted technology partner for all our scaling needs.",
     rating: 5,
+    logo: '/logo/flammer technologies pvt ltd.png'
   },
   {
     id: 4,
-    name: 'David O\'Connor',
-    role: 'CEO, FinStream',
-    content: "Their expertise in Next.js and high-performance applications allowed us to scale gracefully during our Series B growth.",
+    company: 'APS Associates',
+    content: "Their strategic approach to digital solutions is commendable. The customized web application they developed has streamlined our operations and improved efficiency.",
     rating: 5,
+    logo: '/logo/aps-associates.png'
   },
+  {
+    id: 5,
+    company: 'HS Structure',
+    content: "Working with Blueboxx was a seamless experience. They took our vision and turned it into a robust, high-performance web presence that perfectly represents our brand.",
+    rating: 5,
+    logo: '/logo/HS Structure.png'
+  },
+  {
+    id: 6,
+    company: 'Asha Tours & Travels',
+    content: "An incredible team to work with. The new booking system and website overhaul completely changed how we engage with our customers and handle daily operations.",
+    rating: 5,
+    logo: '/logo/Asha_tours&travels.jpeg'
+  },
+  {
+    id: 7,
+    company: 'Green Clean Solar',
+    content: "Blueboxx helped us create a clean, sustainable digital footprint. Their responsive support and high-quality development make them a truly top-tier tech agency.",
+    rating: 5,
+    logo: '/logo/green clean solar.jpeg'
+  },
+  {
+    id: 8,
+    company: 'Indo German',
+    content: "Exceptional design and functionality! The new platform built by Blueboxx helped us increase our brand engagement and customer acquisition rates significantly.",
+    rating: 5,
+    logo: '/logo/indo german.png'
+  }
 ];
 
 export function Testimonials() {
@@ -75,7 +103,7 @@ export function Testimonials() {
           </h2>
         </div>
 
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto relative px-4 sm:px-12">
           <Swiper
             modules={[Autoplay, EffectFade]}
             effect="fade"
@@ -86,13 +114,15 @@ export function Testimonials() {
             autoplay={{
               delay: 4000,
               disableOnInteraction: false,
-              pauseOnMouseEnter: true,
             }}
-            className="rounded-3xl overflow-hidden"
+            className="rounded-3xl shadow-[0_10px_40px_rgb(0,0,0,0.03)]"
           >
-            {testimonials.map((testimonial) => (
+            {testimonials.map((testimonial) => {
+              const isWhiteLogo = testimonial.company === 'HS Structure' || testimonial.company === 'Indo German';
+              
+              return (
               <SwiperSlide key={testimonial.id}>
-                <div className="bg-white/[0.03] border border-black/5 p-8 md:p-16 rounded-3xl relative">
+                <div className="bg-zinc-50 border border-zinc-100 p-8 md:p-16 rounded-3xl relative h-full">
                   <Quote className="absolute top-8 right-8 text-zinc-900/5 w-24 h-24 rotate-12" />
                   
                   <div className="flex items-center gap-1 mb-8">
@@ -101,24 +131,33 @@ export function Testimonials() {
                     ))}
                   </div>
                   
-                  <p className="text-xl md:text-3xl text-zinc-900 font-medium leading-relaxed mb-10">
+                  <p className="text-xl md:text-3xl text-zinc-800 font-medium leading-relaxed mb-10">
                     "{testimonial.content}"
                   </p>
                   
-                  <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-full bg-primary-gradient p-[2px]">
-                      <div className="w-full h-full rounded-full bg-zinc-900 flex items-center justify-center font-bold text-zinc-900 text-xl">
-                        {testimonial.name.charAt(0)}
+                  <div className="flex items-center gap-6 relative z-10 pt-6 border-t border-zinc-200">
+                    {testimonial.logo ? (
+                      <div className="h-20 w-28 sm:h-24 sm:w-40 bg-white rounded-2xl flex items-center justify-center p-2 shadow-sm border border-zinc-100 flex-shrink-0">
+                        <img 
+                          src={testimonial.logo} 
+                          alt={testimonial.company} 
+                          className={`max-h-full max-w-full object-contain ${isWhiteLogo ? 'invert opacity-80' : 'mix-blend-multiply'}`} 
+                        />
                       </div>
-                    </div>
+                    ) : (
+                      <div className="h-16 w-16 sm:h-20 sm:w-20 bg-gradient-to-r from-amber-500 to-amber-600 rounded-2xl flex items-center justify-center p-[2px] flex-shrink-0 shadow-sm">
+                        <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center font-bold text-amber-600 text-2xl sm:text-3xl">
+                          {testimonial.company.charAt(0)}
+                        </div>
+                      </div>
+                    )}
                     <div>
-                      <h4 className="text-lg font-bold text-zinc-900">{testimonial.name}</h4>
-                      <span className="text-zinc-500 text-sm">{testimonial.role}</span>
+                      <h4 className="text-xl sm:text-2xl font-bold text-zinc-900">{testimonial.company}</h4>
                     </div>
                   </div>
                 </div>
               </SwiperSlide>
-            ))}
+            )})}
           </Swiper>
         </div>
       </div>
